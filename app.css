@@ -74,17 +74,20 @@ body {
   font-family: "Jost";
   line-height: 1.5;
   font-size: 24px;
-}
-@media (max-width: 600px) {
-  body {
-    background-color: #a53400;
-  }
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 section {
-  background-color: white;
-  color: orange;
-  box-shadow: 0 0 10px rgba(16, 16, 82, 0.212);
+  max-width: 500px;
+}
+@media (max-width: 800px) {
+  section {
+    font-size: 16px;
+  }
 }
 section p {
   margin: 24px 0 0 0;

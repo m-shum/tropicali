@@ -4,6 +4,9 @@
 $primary-color: orange;
 $body-font: "Jost";
 $body-size: 24px;
+$mq-large: 1600px;
+$mq-medium: 1200px;
+$mq-small: 800px;
 
 @mixin drop-shadow($color) {
     box-shadow: 0 0 10px $color;
@@ -15,21 +18,28 @@ $body-size: 24px;
     }
 }
 
+@mixin true-middle () {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 body {
     background-color: $primary-color;
     color: white;
     font-family: $body-font;
     line-height: 1.5;
     font-size: $body-size;
-    @include mq(600px) {
-        background-color: rgb(165, 52, 0);
-    }
+    height: 100vh;
+    @include true-middle();
 }
 
 section {
-    background-color: white;
-    color: $primary-color;
-    @include drop-shadow(rgba(16, 16, 82, 0.212));
+    max-width: 500px;
+    @include mq($mq-small) {
+        font-size: 16px;
+    }
 
     p {
         margin: 24px 0 0 0;
