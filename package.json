@@ -1,0 +1,22 @@
+{
+  "name": "tropicali",
+  "version": "1.0.0",
+  "description": "website for tropicali",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-shum/tropicali.git"
+  },
+  "author": "Michael Shumakov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m-shum/tropicali/issues"
+  },
+  "homepage": "https://github.com/m-shum/tropicali#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
