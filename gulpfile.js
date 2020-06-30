@@ -4,6 +4,7 @@ var cleanCss = require("gulp-clean-css")
 var sourcemaps = require("gulp-sourcemaps")
 const gulpSourcemaps = require('gulp-sourcemaps')
 var browserSync = require('browser-sync').create()
+var imageMin = require('gulp-imagemin')
 
 sass.compiler = require('node-sass')
 
@@ -33,6 +34,7 @@ gulp.task("fonts", function(){
 
 gulp.task("images", function() {
     return gulp.src("SRC/img/*")
+        .pipe(imageMin())
         .pipe(gulp.dest("dist/img"))
 })
 
