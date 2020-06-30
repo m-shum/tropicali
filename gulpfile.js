@@ -23,7 +23,7 @@ gulp.task("sass", function(){
 })
 
 gulp.task("html", function(){
-    return gulp.src("SRC/index.html")
+    return gulp.src("SRC/*.html")
         .pipe(gulp.dest("dist"))
 })
 
@@ -44,7 +44,7 @@ gulp.task("watch", function() {
             baseDir: "dist"
         }
     })
-    gulp.watch("SRC/index.html", ["html"]).on("change", browserSync.reload)
+    gulp.watch("SRC/*.html", ["html"]).on("change", browserSync.reload)
     gulp.watch("SRC/css/app.scss", ["sass"])
     gulp.watch("SRC/fonts/*", ["fonts"])
     gulp.watch("SRC/img/*", ["images"])
