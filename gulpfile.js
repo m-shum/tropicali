@@ -51,7 +51,7 @@ gulp.task("watch", function() {
     gulp.watch("SRC/img/*", ["images"])
 })
 
-gulp.task("deplpy", function(){
+gulp.task("deplosy", function(){
     ghPages.publish("dist")
 })
 
