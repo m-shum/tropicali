@@ -89,6 +89,7 @@ section.centre {
 @media (--mq-small) {
     section.grid {
         grid-template-columns: 1fr;
+        text-align:center;
     }
 
     header img {
