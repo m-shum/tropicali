@@ -1,18 +1,31 @@
 var gulp = require('gulp')
-var sass = require('gulp-sass')
+var postCss = require('gulp-postcss')
 var cleanCss = require("gulp-clean-css")
 var sourcemaps = require("gulp-sourcemaps")
 const gulpSourcemaps = require('gulp-sourcemaps')
 var browserSync = require('browser-sync').create()
 var imageMin = require('gulp-imagemin')
 var ghPages = require("gh-pages")
+var concat = require("gulp-concat")
 
-sass.compiler = require('node-sass')
 
-gulp.task("sass", function(){
-    return gulp.src("SRC/css/app.scss")
+gulp.task("css", function(){
+    return gulp.src([
+        "SRC/css/reset.css",
+        "SRC/css/typography.css",
+        "SRC/css/app.css"
+    ])
         .pipe(sourcemaps.init())
-        .pipe(sass())
+        .pipe(
+            postCss([
+                require("autoprefixer"), 
+                require("postcss-preset-env")({
+                    stage: 1, 
+                    browsers: ["IE 11", "last 2 versions"]
+                })
+            ])
+        )
+        .pipe(concat("app.css"))
         .pipe(
             cleanCss({ 
                 compatibility: 'ie8' 
@@ -46,7 +59,7 @@ gulp.task("watch", function() {
         }
     })
     gulp.watch("SRC/*.html", ["html"]).on("change", browserSync.reload)
-    gulp.watch("SRC/css/app.scss", ["sass"])
+    gulp.watch("SRC/css/*", ["css"])
     gulp.watch("SRC/fonts/*", ["fonts"])
     gulp.watch("SRC/img/*", ["images"])
 })
@@ -55,4 +68,4 @@ gulp.task("deploy", function(){
     ghPages.publish("dist")
 })
 
-gulp.task('default', ["html", "sass", "fonts", "images", "watch"])
+gulp.task('default', ["html", "css", "fonts", "images", "watch"])
